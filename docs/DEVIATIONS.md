@@ -203,6 +203,85 @@ binary maps cleanly onto these qualitative behaviors) remains an open
 question for v0.2 — and is itself one of the strongest reasons to run
 v0.2.
 
+### 2026-05-05 — Writeup framing revision pass (no analytical changes)
+
+**Deviation:** `docs/WRITEUP.md` was revised on 2026-05-05 to soften
+several framings, align terminology with `PRE-REGISTRATION.md`, and
+correct two stale references. Revisions are exclusively presentation /
+framing — no analytical, data, figure, or table changes.
+
+**Specific changes:**
+
+1. **"Domain-general open-weight LLM hedge" → "calibration artifact in
+   this 4-model 7–9B sample" / "calibration artifact in this size
+   class"** (Abstract, §3.2 mechanism interpretation, §4.3 discussion
+   conclusion). Original phrasing generalized from N=4 models in one
+   size class to a property of "open-weight LLMs" generally; revised
+   phrasing scopes the claim to what the data supports and forward-points
+   to v0.2 as the question of broader generalization.
+
+2. **"Prompt-level defenses are insufficient in the 7–9B open-weight
+   size class" → "the pre-registered prompt-level mitigation provided
+   no measurable defensive benefit in the one model where its effect
+   was testable"** (Abstract). Original phrasing generalized from the
+   N=1 leaking model to a class-wide claim; revised phrasing scopes
+   to the actual testable evidence.
+
+3. **§1.1 Deployment-class scoping bullet rewritten.** Original
+   phrasing claimed CPIB "targets the parameter-class actively running
+   in healthcare deployment in 2026" — an empirical claim about
+   deployment patterns the v0.1 author cannot substantiate. Revised
+   to scope the 7–9B choice to the documented prompt-injection-defense
+   literature band and acknowledge that deployment-size distribution
+   is not established in the literature.
+
+4. **§4.2 mitigation-failure paragraph rephrased.** Original phrasing
+   appealed to "practitioner experience that prompt-level defenses
+   are brittle" — an unattributed field-state claim. Revised to lean
+   directly on the already-cited primary source (OWASP LLM01:2025
+   guidance) and drop the practitioner-experience framing.
+
+5. **"baseline anchor" / "baseline-anchor stage" / "baseline-anchor
+   gate" → "baseline gate" / "baseline-gate stage"** (5 occurrences
+   across Abstract, §1.1, §3.2, §6.1). Aligns terminology with
+   `PRE-REGISTRATION.md`'s "baseline sanity gate" framing — the
+   pre-reg's source-of-truth term.
+
+6. **"regex-success binary" → "regex-based leak detection"** (§5
+   Limitations, §6.2 v0.2 roadmap; 2 occurrences). Plain-language
+   rephrasing of harness-internal jargon.
+
+7. **GitHub URL: `aethr-dev/mp2-clinical-injection` → `aethr-dev/clinical-prompt-injection-benchmark`**
+   (§6.3). Repository was renamed during 2026-04-30 cleanup; the URL
+   in the writeup was stale.
+
+8. **§6.2 v0.2 roadmap expanded from 5 axes to 7 axes.** Added (a)
+   third matched control wrapping in fictional-but-medical-sounding
+   scale (folds into Finding 2's SRI familiarity-confound resolution),
+   and (b) additional defense-pattern testing beyond prompt-level
+   mitigation (directly responsive to Finding 3). Both axes were
+   already in `FUTURE_WORK.md`; the original five-axis enumeration was
+   an editorial selection that omitted them.
+
+9. **Minor cleanup:** "constraints worth noting" → "constraints with
+   implications for replication" (§4.4). Title-section footer extended
+   to indicate 2026-05-05 revision date.
+
+**Rationale:** Framing / terminology / reference cleanup only. The
+shipped v0.1 dataset (`results/run_2026-04-20_034721`), all `.jsonl`
+row contents, all proportion calculations, all Fisher's exact test
+outputs, all Wilson 95% CIs, and the primary figure are unchanged. The
+pre-registration tag (`pre-registration-v1`, commit `6fedb4e`)
+continues to reference the pre-execution state of the harness; this
+revision modifies only `docs/WRITEUP.md` and `docs/DEVIATIONS.md`
+(this entry).
+
+**Affected outcomes:** None on primary or secondary outcomes.
+Documentation framing only.
+
+**Reporting impact:** Title-section footer indicates the revision date
+and points readers to this DEVIATIONS entry for the change log.
+
 ### 2026-04-26 — Vendor responsible-disclosure executed concurrent with public release rather than before
 
 **Deviation:** `docs/METHODOLOGY.md` § Ethics commits to sharing findings
