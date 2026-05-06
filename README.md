@@ -13,10 +13,11 @@ misses?
 ## Status
 
 CPIB v0.1 complete. Full 560-run pilot sweep executed, validated, and
-scored; pre-registered primary hypothesis tests (H1a, H1b, H2a, H2b, H3,
-H4) computed via deterministic regex extraction with per-cell Wilson 95%
-CIs and two-sided Fisher's exact tests. See `docs/WRITEUP.md` for results
-and discussion. Pre-registration committed and git-tagged
+scored; pre-registered primary outcomes computed via deterministic
+regex extraction. H1a/H1b/H2a/H2b/H3 are hypothesis tests (two-sided
+Fisher's exact + per-cell Wilson 95% CIs); H4 (model variation) is
+pre-registered as descriptive variance reporting rather than
+hypothesis-tested. See `docs/WRITEUP.md` for results and discussion. Pre-registration committed and git-tagged
 (`pre-registration-v1`) before any execution run; all post-tag deviations
 are logged in `docs/DEVIATIONS.md`. The locked analysis plan lives in
 `docs/PRE-REGISTRATION.md`.
