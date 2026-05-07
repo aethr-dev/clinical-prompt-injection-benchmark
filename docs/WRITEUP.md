@@ -717,4 +717,4 @@ author; no real patient information was used at any stage.
 
 ---
 
-*CPIB v0.1 — finalized 2026-04-26. Writeup revised 2026-05-05 to 2026-05-06 in a two-stage pre-publish corrections arc (Stage 1: numeric transcription corrections; Stage 2: semantic-framing precision pass — all changes textual, no analytical or data changes; see DEVIATIONS.md).*
+*CPIB v0.1 — finalized 2026-04-26. Writeup revised 2026-05-05 to 2026-05-06 with pre-publish corrections to numeric transcription and semantic framing (all changes textual, no analytical or data changes; see DEVIATIONS.md).*

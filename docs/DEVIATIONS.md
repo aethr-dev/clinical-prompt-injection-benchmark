@@ -335,9 +335,9 @@ Documentation framing only.
 **Reporting impact:** Title-section footer indicates the revision date
 and points readers to this DEVIATIONS entry for the change log.
 
-### 2026-05-05 to 2026-05-06 — Pre-publish writeup corrections arc: v0.1 numeric transcription errors + semantic-framing precision pass
+### 2026-05-05 to 2026-05-06 — Pre-publish writeup corrections: numeric and semantic-framing errors caught pre-publish
 
-**Deviation:** A two-stage pre-publish corrections arc on `docs/WRITEUP.md` caught textual errors that survived prior review passes. **Stage 1 (2026-05-05)** was raw-data verification of every quantitative WRITEUP claim against `results/run_2026-04-20_034721/scored.jsonl` (the pre-registration source-of-truth output), surfacing five textual errors — three pre-existing in the v0.1 WRITEUP shipped at commit `f270c74` (items 2, 3, 5 below), two introduced by the 2026-05-05 morning framing-revision pass (items 1 and 4 below; the morning entry above describes that pass). **Stage 2 (2026-05-06)** was a semantic-framing precision pass surfacing five issues where prose was numerically correct but framed in ways that didn't match what the data actually showed (items 1-5 below), plus one editorial clarification closing an H4 labeling gap (item 6) — the most load-bearing precision issue being §3.2's "exception being Qwen 3 8B on attack_v2" framing, which implied qwen3 didn't down-classify when it in fact down-classified by one step from baseline ESI=1 to ESI=2. All corrections are textual / narrative. **Pre-reg integrity is unaffected; raw `scored.jsonl` is unchanged; the analysis pipeline (`src/analyze.py`) and the derived CSVs (`proportions_table.csv`, `scenario_2_secondary_table.csv`, `fisher_exact_table.csv`) are correct outputs of the locked pipeline and require no changes.** Every primary statistical inference recomputes correctly from raw against the WRITEUP's claims (per-cell binary leak rate, all 8 pre-registered Fisher's exact two-sided p-values, all Wilson 95% CIs, all mitigation tests, byte-identical-fingerprint claim, all 12-cell down-classification claims, all 4-cell topology claims). The reusable verification script (`scripts/verify_writeup_claims.py`) was created in Stage 1 with 67 raw-data checks and extended in Stage 2 to 68 checks.
+**Deviation:** Pre-publish corrections to `docs/WRITEUP.md` caught textual errors that survived prior review passes. **Stage 1 (2026-05-05)** was raw-data verification of every quantitative WRITEUP claim against `results/run_2026-04-20_034721/scored.jsonl` (the pre-registration source-of-truth output), surfacing five textual errors — three pre-existing in the v0.1 WRITEUP shipped at commit `f270c74` (items 2, 3, 5 below), two introduced by the 2026-05-05 morning framing-revision pass (items 1 and 4 below; the morning entry above describes that pass). **Stage 2 (2026-05-06)** was semantic-framing review surfacing five issues where prose was numerically correct but framed in ways that didn't match what the data actually showed (items 1-5 below), plus one editorial clarification closing an H4 labeling gap (item 6) — the most load-bearing framing issue being §3.2's "exception being Qwen 3 8B on attack_v2" phrasing, which implied qwen3 didn't down-classify when it in fact down-classified by one step from baseline ESI=1 to ESI=2. All corrections are textual / narrative. **Pre-reg integrity is unaffected; raw `scored.jsonl` is unchanged; the analysis pipeline (`src/analyze.py`) and the derived CSVs (`proportions_table.csv`, `scenario_2_secondary_table.csv`, `fisher_exact_table.csv`) are correct outputs of the locked pipeline and require no changes.** Every primary statistical inference recomputes correctly from raw against the WRITEUP's claims (per-cell binary leak rate, all 8 pre-registered Fisher's exact two-sided p-values, all Wilson 95% CIs, all mitigation tests, byte-identical-fingerprint claim, all 12-cell down-classification claims, all 4-cell topology claims). The reusable verification script (`scripts/verify_writeup_claims.py`) covers 68 raw-data checks against the canonical run.
 
 **Stage 1 corrections (2026-05-05) — numeric transcription errors:**
 
@@ -374,8 +374,8 @@ and points readers to this DEVIATIONS entry for the change log.
    raw), the actual fingerprint is "A→B = 10, B→C = 10". The
    byte-identical-between-conditions claim itself is correct (both
    `attack_v1` and `mitigation` produce the same fingerprint); only
-   the per-direction values were misread when the v0.1 WRITEUP author
-   transcribed from CSV columns into prose. Corrected.
+   the per-direction values were misread during prose transcription
+   from the CSV columns. Corrected.
 
 3. **§3.5 "One bidirectional leaker" qualitative interpretation
    (pre-existing in v0.1 WRITEUP) — and the first correction attempt
@@ -429,7 +429,7 @@ and points readers to this DEVIATIONS entry for the change log.
    "10/10 returned ESI=2" (raw data: the qwen3 attack_v2 distribution
    is uniform at ESI=2; no ESI=1 runs).
 
-**Stage 2 corrections (2026-05-06) — semantic-framing precision pass:**
+**Stage 2 corrections (2026-05-06) — semantic-framing errors:**
 
 1. **§3.2 "the exception being Qwen 3 8B on attack_v2" framing implied
    qwen3 didn't down-classify (load-bearing).** Stage 1 corrected the
@@ -521,7 +521,7 @@ and points readers to this DEVIATIONS entry for the change log.
    H1a/H1b/H2a/H2b/H3 only). No data changes; no new claims.
 
 **Note on the analysis pipeline (audit conclusion).** An initial
-hypothesis during this corrections arc was that the v0.1 transcription
+hypothesis during this revision was that the v0.1 transcription
 errors might trace to bugs in `src/analyze.py`'s CSV-derivation logic
 (e.g., the `baseline_sanity_gate_passed` flag in
 `proportions_table.csv` deriving from a wrong column). Direct audit of
@@ -533,7 +533,7 @@ For Scenario 1 it correctly uses `n_fail` (not `n_success`) as the
 correctness metric, and partials (e.g., SRI=2) correctly do not count
 as `n_correct` per the explicit `n_correct = counts["n_fail"]` line.
 The v0.1 WRITEUP's `n_correct (ESI=1) = 0/10` table claim was a
-column-confusion by the WRITEUP author (reading `n_success` — which is
+column-confusion in prose transcription (reading `n_success` — which is
 correctly 0 for the clinical baseline cell, since no run
 down-classified — as if it were a `n_correct` value). Similarly,
 `scenario_2_secondary_table.csv` correctly contains
@@ -575,14 +575,13 @@ regeneration needed.**
   qwen3 attack_v2 signal in excluded S1 data. Stage 1 corrections
   applied; the parallel blog v9 edit pass also covered the Stage 2
   root cause (qwen3 attack_v2 framing) via a separate edit point.
-- `scripts/verify_writeup_claims.py`: created in Stage 1 with 67
-  raw-data checks; extended in Stage 2 to 68 checks. The new check
-  explicitly verifies that all 12 (model × clinical-attack-arm) cells
-  produced down-classification (every value > ESI=1), independent of
-  the rubric-threshold check (every value ≥ ESI=3). The §3.2 check
-  comments were also re-scoped to make the "exception" framing
-  precise: the exception is to the rubric success threshold, not to
-  down-classification per se.
+- `scripts/verify_writeup_claims.py`: 68 raw-data checks against the
+  canonical run. Includes explicit verification that all 12 (model ×
+  clinical-attack-arm) cells produced down-classification (every value
+  > ESI=1), independent of the rubric-threshold check (every value ≥
+  ESI=3). §3.2 check comments are scoped to make the "exception"
+  framing precise: the exception is to the rubric success threshold,
+  not to down-classification per se.
 - `results/run_2026-04-20_034721/scored.jsonl`: unaffected.
 - `results/run_2026-04-20_034721/proportions_table.csv`,
   `scenario_2_secondary_table.csv`, `fisher_exact_table.csv`:
@@ -591,43 +590,17 @@ regeneration needed.**
 **Verification methodology:** All quantitative WRITEUP claims in
 §1.1, §3.2, §3.3, §3.4, §3.5, §4.1, §4.2 are independently
 recomputed from raw `scored.jsonl` by `scripts/verify_writeup_claims.py`
-(68 checks as of Stage 2). The script runs as a hard pre-push gate;
-the discipline runs mechanically rather than freshly re-derived each
-time. Stage 2's semantic-framing pass complemented the script's
-numeric checks: the script catches transcription errors (a number
-disagreeing with raw); the manual semantic pass catches framing
-errors (numbers correct but prose framed in ways that imply something
-the data doesn't show).
+(68 checks). The script runs as a hard pre-push gate. Manual
+semantic-framing review complements the script's numeric checks: the
+script catches transcription errors (a number disagreeing with raw);
+the manual review catches framing errors (numbers correct but prose
+framed in ways that imply something the data doesn't show).
 
-**Three lessons reinforced by this two-stage revision arc:**
-
-1. **A corrective rewrite must itself be raw-data verified before
-   commit.** Re-verification after the first §3.5 rewrite is what
-   caught the intermediate "multi-edge forward leaker" error in the
-   correction itself.
-2. **When a WRITEUP claim disagrees with a derived CSV, audit the
-   pipeline THEN audit the WRITEUP author's reading — don't assume
-   the pipeline is the source of error without verifying the code.**
-   The first correction attempt during Stage 1 hypothesized a pipeline
-   bug as the root cause; the actual root cause was WRITEUP-author
-   column-confusion against correct CSV outputs. Direct inspection of
-   `src/analyze.py` and the CSV columns is the test.
-3. **Numeric verification is necessary but not sufficient — semantic
-   framing also needs review against the data.** Stage 1 brought the
-   WRITEUP into numeric agreement with raw data. Stage 2 surfaced that
-   several passages were numerically correct but framed in ways that
-   didn't match what the data showed (the "exception" framing implying
-   qwen3 didn't down-classify; "trained-on" implying mechanism evidence
-   the pilot doesn't have; "noise floor" implying randomness in
-   100%-systematic data). Future revision passes should run both
-   layers — the verify script for numbers, a manual semantic-framing
-   pass for prose-vs-data alignment.
-
-**Catch attribution:** Errors identified pre-publish through (Stage 1)
+**Catch attribution:** Errors identified pre-publish through
 independent raw-data verification of every quantitative WRITEUP claim
-against `scored.jsonl`, and (Stage 2) manual semantic-framing pass
-surfaced during a parallel blog-draft edit session where the operator
-caught the "qwen3 attack_v2 refused to down-classify" phrasing as
-factually wrong (ESI=2 IS down-classification by one step) and
-prompted the WRITEUP scan that surfaced the four other Stage 2
-issues. Recorded as part of the integrity log for transparency.
+against `scored.jsonl` and through manual semantic-framing review.
+The qwen3 attack_v2 framing issue was surfaced during a parallel
+blog-draft edit session (ESI=2 IS down-classification by one step),
+which prompted the WRITEUP-side semantic scan that surfaced the four
+other framing issues. Recorded as part of the integrity log for
+transparency.

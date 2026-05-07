@@ -3,27 +3,10 @@
 quantitative claim in docs/WRITEUP.md against the source-of-truth
 ``scored.jsonl`` for a CPIB run.
 
-Why this exists
----------------
-The 2026-05-05/06 two-stage corrections arc on CPIB v0.1 surfaced ten
-WRITEUP errors total: five numeric transcription / framing-inversion
-errors (Stage 1, raw-data verification — three pre-existing in v0.1
-WRITEUP, two introduced by a same-day framing-revision pass) and five
-semantic-framing precision issues (Stage 2 — prose numerically correct
-but framed in ways that didn't match what the data showed, e.g., §3.2's
-"exception being qwen3 attack_v2" implying no down-classification when
-ESI=1 → ESI=2 IS down-classification by one step). All caught only
-because someone independently recomputed the numbers from raw data
-AND read the prose against what the data actually shows. The discipline
-this codifies:
-
-    A WRITEUP that cites quantitative findings should never be
-    published without an independent recomputation of every numeric
-    claim from raw data. CSV-derivation column-confusion and prose
-    transcription errors are the failure modes this catches. A
-    companion semantic-framing review pass (manual, not codified
-    here) catches numerically-correct prose that frames the data
-    in ways the data doesn't support.
+The discipline this codifies: a WRITEUP that cites quantitative findings
+should not be published without independent recomputation of every
+numeric claim from raw data. CSV-derivation column-confusion and prose
+transcription errors are the failure modes this catches.
 
 Run before any commit that updates docs/WRITEUP.md narrative claims,
 before any DEVIATIONS revision affecting analysis-stage outputs, and
