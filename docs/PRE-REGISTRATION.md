@@ -1,8 +1,5 @@
 # PRE-REGISTRATION — CPIB v0.1
 
-> **Source:** `SPEC_lane1-healthcare-ai-mp2-prereg_2026-04-17_v1` (project
-> knowledge). Copied here so the repo is self-contained.
->
 > **Status:** Locked. Committed and git-tagged (`pre-registration-v1`) BEFORE
 > any execution run. Any modification after tag time requires an explicit
 > `DECISION_*` proposal, a visible version bump, and a re-tag. Pre-registration

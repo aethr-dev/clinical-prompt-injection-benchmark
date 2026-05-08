@@ -3,9 +3,9 @@
 > **Source:** internal scope decision, 2026-04-17 (consolidated into this repo).
 >
 > **Reader note:** This is a pre-execution scope-lock document, frozen at the
-> dates in its changelog. For the current state of the project — what was
+> dates in its changelog. For the current state of the project (what was
 > actually executed, the analyzed results, and any deviations from the plan
-> below — see `docs/WRITEUP.md` and `docs/DEVIATIONS.md`.
+> below) see `docs/WRITEUP.md` and `docs/DEVIATIONS.md`.
 
 ---
 
@@ -87,7 +87,7 @@ comparators (data-handling constraints permitting), second human rater
 - Optional micro-experiment: subset with preamble-absent for preamble-effect
   measurement
 
-**Writeup framing:** "exploratory comparator arm at frontier scale" — not a
+**Writeup framing:** "exploratory comparator arm at frontier scale"; not a
 full evaluation. Named scope limit protects the claim.
 
 #### Gate 1 — Monday AM
@@ -108,15 +108,15 @@ Tier 1, use Monday for fixes.
 
 ### Tier 2 — Reach (Tuesday–Wednesday, if Gate 2 = GO)
 
-**Add:** second-order analysis — pick ONE based on data shape.
+**Add:** second-order analysis. Pick ONE based on data shape.
 
-- **2A — Refusal-language taxonomy:** cluster model responses by refusal style;
+- **2A. Refusal-language taxonomy:** cluster model responses by refusal style;
   correlate with attack resistance. Best if raw results show heterogeneous
   refusal behavior. ~2–3 hours.
-- **2B — Attack-variant breakdown:** decompose attack success by injection-type
+- **2B. Attack-variant breakdown:** decompose attack success by injection-type
   × model; quantify which attack flavor generalizes vs. is model-specific. Best
   if attacks show divergent patterns. ~2 hours.
-- **2C — Mitigation dose-response:** add one stronger mitigation variant;
+- **2C. Mitigation dose-response:** add one stronger mitigation variant;
   report no/minimal/stronger defense as trajectory. Converts mitigation from
   single-condition to dose-response. ~3–4 hours (includes new runs).
 

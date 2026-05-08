@@ -41,9 +41,9 @@ format, purpose, producer (creates the file), consumer (reads it).
 | `.env.example` | dotenv | Env var template (no secrets) | human | user, documentation |
 | `README.md` | Markdown | Public landing page | human | external reader |
 | `LICENSE` | text | MIT license | human | legal |
-| `docs/SCOPE.md` | Markdown | Tiered scope + timeline + locked params | human | Claude Code, reviewer |
-| `docs/METHODOLOGY.md` | Markdown | Full study design | human | Claude Code, reviewer |
-| `docs/PRE-REGISTRATION.md` | Markdown | Hypotheses + outcomes + rubric (locked) | human | Claude Code, reviewer |
+| `docs/SCOPE.md` | Markdown | Tiered scope + timeline + locked params | human | reviewer |
+| `docs/METHODOLOGY.md` | Markdown | Full study design | human | reviewer |
+| `docs/PRE-REGISTRATION.md` | Markdown | Hypotheses + outcomes + rubric (locked) | human | reviewer |
 | `docs/DEVIATIONS.md` | Markdown | Append-only deviation log | human (during exec) | reviewer |
 | `docs/ANNOTATION_RUBRIC.md` | Markdown | 4-field rubric + calibration examples | human | rater, Claude rater |
 | `docs/PIPELINE_CONTRACT.md` | Markdown | This doc | human | pipeline + reviewer |
@@ -62,7 +62,7 @@ format, purpose, producer (creates the file), consumer (reads it).
 
 | Path | Format | Purpose | Producer | Consumer |
 |---|---|---|---|---|
-| `docs/RESUME.md` | Markdown | Session state (GITIGNORED) | human + Claude Code | Claude Code next session |
+| `docs/RESUME.md` | Markdown | Session state (GITIGNORED) | human | reviewer (next session) |
 | `.env` | dotenv | Real env var values (GITIGNORED) | human | harness |
 
 ### 1.3 Run-time generated artifacts

@@ -9,10 +9,10 @@ never silently applied.**
 Each entry:
 
 - **Date** (ISO 8601 with timezone offset)
-- **Deviation** — what changed vs. the pre-reg
-- **Rationale** — why the deviation was necessary
-- **Affected runs** — which scenario / condition / model / run indices
-- **Reporting impact** — what the writeup will say
+- **Deviation:** what changed vs. the pre-reg
+- **Rationale:** why the deviation was necessary
+- **Affected runs:** which scenario / condition / model / run indices
+- **Reporting impact:** what the writeup will say
 
 ## Template
 
@@ -229,10 +229,9 @@ open-weight models that any researcher could reproduce locally with
 the published code. Comparable benchmarks (HELM-Safety, GARAK,
 PurpleLlama) routinely publish attack templates publicly without
 per-vendor pre-disclosure. Time-budget pressure on a hard external
-submission deadline (Anthropic Fellows application, 2026-04-26) made
-the alternative — embargo, multi-vendor coordinated disclosure window,
-delayed submission — infeasible without dropping the application
-cycle.
+submission deadline (2026-04-26) made the alternative (embargo,
+multi-vendor coordinated disclosure window, delayed submission)
+infeasible.
 
 **Affected outcomes:** None on primary or secondary outcomes. The
 deviation is a methodology-compliance gap relative to the
@@ -255,6 +254,16 @@ visible to any reviewer. This DEVIATIONS entry is the auditable record
 of the gap and the corrective action. If the writeup is updated for a
 v0.2 republication, an explicit note is added to its ethics section
 acknowledging the v0.1 disclosure timing.
+
+**Update (2026-05-07):** The corrective-action async vendor notification
+was not executed within the 7-day target window (by 2026-05-03). An
+email template was drafted (operator-private, not in repo) but not sent.
+The original pre-disclosure commitment in `docs/METHODOLOGY.md` § Ethics
+has been updated (see METHODOLOGY changelog v3) to passive disclosure
+via the public repository, aligning the stated commitment with v0.1
+actual practice and the v0.2-onward stance. The v0.1 pre-disclosure
+commitment is now treated as fully superseded; no further corrective
+action is planned.
 
 ### 2026-05-05 — Writeup framing revision pass (no analytical changes)
 

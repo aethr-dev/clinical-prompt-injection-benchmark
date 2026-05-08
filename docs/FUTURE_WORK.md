@@ -243,7 +243,7 @@ for Scenario 2). Validates that the refusal / flag / hedge decisions
 are clinically meaningful categories.
 
 **Why it matters.** "Hedge" and "injection_flagged" are rubric categories
-designed by a biomedical engineer, not a practicing clinician. Clinical
+designed without a clinician in the loop. Clinical
 validation sharpens the secondary outcome measurement.
 
 **Rough scope.** Dependent on rater recruitment. Scope as one-shot

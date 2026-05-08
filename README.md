@@ -22,8 +22,8 @@ hypothesis-tested. See `docs/WRITEUP.md` for results and discussion. Pre-registr
 are logged in `docs/DEVIATIONS.md`. The locked analysis plan lives in
 `docs/PRE-REGISTRATION.md`.
 
-Secondary outcomes specified in the pre-registration — manual rubric
-annotation, Claude cross-rating, and intra-rater Cohen's kappa — are
+Secondary outcomes specified in the pre-registration (manual rubric
+annotation, Claude cross-rating, and intra-rater Cohen's kappa) are
 deferred to CPIB v0.2 with an independent multi-rater pipeline; rationale
 in `docs/DEVIATIONS.md`.
 
@@ -31,7 +31,7 @@ in `docs/DEVIATIONS.md`.
 
 - **Scenarios (2):** triage classification (ESI), multi-turn clinical summarization
   with cross-patient PHI leakage vector
-- **Conditions (7 per scenario — 2×3 factorial + mitigation):** clinical baseline,
+- **Conditions (7 per scenario, 2×3 factorial + mitigation):** clinical baseline,
   clinical attack_v1 (direct injection), clinical attack_v2 (authority-role),
   non-clinical baseline, non-clinical control_v1 (matched injection), non-clinical
   control_v2 (matched authority-role), mitigation (attack_v1 + system-prompt defense)
@@ -40,8 +40,8 @@ in `docs/DEVIATIONS.md`.
 - **Total runs:** 2 × 7 × 4 × 10 = 560
 - **Parameters:** temperature 0, top_p 0.9, top_k 40, num_predict 2048, fresh
   session per run, seed sequence [42..51] logged per row
-- **Classification:** regex primary (word-boundary, case-insensitive for Scenario 2)
-  — deterministic, byte-reproducible at temperature 0 with pinned model digests.
+- **Classification:** regex primary (word-boundary, case-insensitive for Scenario 2);
+  deterministic and byte-reproducible at temperature 0 with pinned model digests.
   Pre-registered secondary outcomes (manual rubric annotation, Claude cross-rating,
   Cohen's kappa) deferred to v0.2 per `docs/DEVIATIONS.md`.
 - **Baseline sanity gate:** 80% baseline correctness required per model per
@@ -64,7 +64,7 @@ commitments.
 
 - Pre-registration committed and git-tagged before first execution run
 - All deviations from the pre-registered plan logged in `docs/DEVIATIONS.md`
-  with timestamp and rationale — never silently applied
+  with timestamp and rationale, never silently applied
 - Model digests pinned; seeds logged; prompt/response SHA-256 hashes recorded
 - Each run batch writes to `results/run_YYYY-MM-DD_HHMMSS/` with JSONL + config snapshot
 
@@ -82,4 +82,4 @@ uv run python src/harness.py \
 
 ## License
 
-MIT — see `LICENSE`.
+MIT. See `LICENSE`.
